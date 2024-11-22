@@ -32,3 +32,4 @@ if __name__ == "__main__":
         print(masked_card)
     if masked_account:
         print(masked_account)
+# изменения
