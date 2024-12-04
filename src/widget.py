@@ -1,35 +1,18 @@
-import os
-
 from src.masks import get_mask_account, get_mask_card_number
 
 
-def mask_account_card(info: str) -> str:
-    """Функция, которая маскирует номер карты или счета."""
-    parts = info.split()
-    if len(parts) < 2:
-        return "Ошибка: некорректный ввод."
-
-    identifier = " ".join(parts[:-1])
-    number = parts[-1]
-
-    if identifier.lower().startswith("счет"):
-        masked_info = get_mask_account(number)
-        return f"{identifier} **{masked_info}"
+def mask_account_card(user_card: str) -> str:
+    """Функция маскировки карты или счета"""
+    if len(user_card) <= 0:
+        raise ValueError("Ошибка ввода! Пожалуйста, введите корректный номер карты или счета.")
+    elif "Счет" in user_card:
+        mask_acc_numb = f"{user_card[:4]} {get_mask_account(user_card[5:])}"
+        return mask_acc_numb
     else:
-        masked_info = get_mask_card_number(number)
-        return f"{identifier} {masked_info}"
+        mask_cart_numb = f"{user_card[:-16]}{get_mask_card_number(user_card[-16:])}"
+        return mask_cart_numb
 
 
-def get_date(date_str: str) -> str:
-    """Функция, которая преобразует строку даты в нужный формат."""
-    date_part = date_str.split("T")[0]
-    year, month, day = date_part.split("-")
-    return f"{day}.{month}.{year}"
-
-
-user_input = input("Введите тип и номер карты (или счет): ")
-masked_output = mask_account_card(user_input)
-print(masked_output)
-
-
-print(get_date("2024-03-11T02:26:18.671407"))
+def get_date(user_date: str) -> str:
+    """Функция корректировки даты и возвращения её в формате ДД.ММ.ГГГГ"""
+    return f"{user_date[8:10]}.{user_date[5:7]}.{user_date[:4]}"
