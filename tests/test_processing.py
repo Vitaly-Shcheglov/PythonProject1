@@ -1,5 +1,7 @@
+from typing import Dict, List, Union
+
 import pytest
-from typing import List, Dict, Union
+
 from src.processing import filter_by_state, sort_by_date
 
 
