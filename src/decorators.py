@@ -1,5 +1,5 @@
 from functools import wraps
-from typing import Callable, Any, Optional
+from typing import Any, Callable, Optional
 
 
 def log(filename: Optional[str] = None) -> Callable:
@@ -17,7 +17,7 @@ def log(filename: Optional[str] = None) -> Callable:
                     with open(filename, "a") as file:
                         file.write(log_message)
                 else:
-                    print(log_message, end='')
+                    print(log_message, end="")
 
                 result = func(*args, **kwargs)
 
@@ -26,7 +26,7 @@ def log(filename: Optional[str] = None) -> Callable:
                     with open(filename, "a") as file:
                         file.write(log_message)
                 else:
-                    print(log_message, end='')
+                    print(log_message, end="")
 
                 return result
             except Exception as e:
@@ -35,9 +35,17 @@ def log(filename: Optional[str] = None) -> Callable:
                     with open(filename, "a") as file:
                         file.write(log_message)
                 else:
-                    print(log_message, end='')
+                    print(log_message, end="")
                 raise
 
         return wrapper
 
     return logging_decorator
+
+
+@log(filename="mylog.txt")
+def my_function(x: int, y: int) -> int:
+    return x + y
+
+
+my_function(1, 2)
