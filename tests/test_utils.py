@@ -3,8 +3,7 @@ import os
 import unittest
 from unittest.mock import mock_open, patch
 
-from src.utils import \
-    get_operations_data
+from src.utils import get_operations_data
 
 
 class TestGetOperationsData(unittest.TestCase):
@@ -21,9 +20,7 @@ class TestGetOperationsData(unittest.TestCase):
     )
     def test_get_operations_data_success(self, mock_file):
         """Тест успешного получения данных операций из JSON-файла"""
-        test_path = (
-            r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\test_file.json"
-        )
+        test_path = r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\test_file.json"
         result = get_operations_data(test_path)
 
         expected_result = [
@@ -39,9 +36,7 @@ class TestGetOperationsData(unittest.TestCase):
         """Тест получения пустого списка операций из пустого JSON-файла"""
         mock_file.return_value.__enter__.return_value.read.return_value = "[]"
 
-        test_path = (
-            r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\empty_file.json"
-        )
+        test_path = r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\empty_file.json"
         result = get_operations_data(test_path)
 
         self.assertEqual(result, [])
@@ -50,13 +45,9 @@ class TestGetOperationsData(unittest.TestCase):
     @patch("builtins.open", new_callable=mock_open)
     def test_get_operations_data_invalid_json(self, mock_file):
         """Тест на обработку некорректного JSON"""
-        mock_file.return_value.__enter__.return_value.read.return_value = (
-            "{ invalid json }"
-        )
+        mock_file.return_value.__enter__.return_value.read.return_value = "{ invalid json }"
 
-        test_path = (
-            r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\invalid.json"
-        )
+        test_path = r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\invalid.json"
         result = get_operations_data(test_path)
 
         self.assertEqual(result, [])
@@ -67,9 +58,7 @@ class TestGetOperationsData(unittest.TestCase):
         """Тест на случай, когда файл не найден"""
         mock_file.side_effect = FileNotFoundError
 
-        test_path = (
-            r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\nonexistent.json"
-        )
+        test_path = r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\nonexistent.json"
         result = get_operations_data(test_path)
 
         self.assertEqual(result, [])

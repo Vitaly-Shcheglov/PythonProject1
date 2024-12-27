@@ -8,9 +8,7 @@ class TestCurrencyConversion(unittest.TestCase):
 
     def test_get_transaction_amount_rub(self):
         """Тестирование функции получения суммы операции в рублях"""
-        transaction = {
-            "operationAmount": {"amount": "1000", "currency": {"code": "RUB"}}
-        }
+        transaction = {"operationAmount": {"amount": "1000", "currency": {"code": "RUB"}}}
         self.assertEqual(get_transaction_amount(transaction), 1000.0)
 
     @patch("src.external_api.convert_amount")
@@ -42,7 +40,7 @@ class TestCurrencyConversion(unittest.TestCase):
         mock_get.return_value.reason = "The requested resource doesn't exist."
 
         result = convert_amount("USD", "5")
-        self.assertEqual(result, 0.0)  # Проверяем, что возвращается 0.0 при ошибке
+        self.assertEqual(result, 0.0)
 
 
 if __name__ == "__main__":
