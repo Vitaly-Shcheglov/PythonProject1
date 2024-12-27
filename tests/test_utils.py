@@ -20,7 +20,7 @@ class TestGetOperationsData(unittest.TestCase):
     )
     def test_get_operations_data_success(self, mock_file):
         """Тест успешного получения данных операций из JSON-файла"""
-        test_path = r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\test_file.json"
+        test_path = r"C:\Users\User\PycharmProjects\PycharmProject1\data\test_file.json"
         result = get_operations_data(test_path)
 
         expected_result = [
@@ -36,7 +36,7 @@ class TestGetOperationsData(unittest.TestCase):
         """Тест получения пустого списка операций из пустого JSON-файла"""
         mock_file.return_value.__enter__.return_value.read.return_value = "[]"
 
-        test_path = r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\empty_file.json"
+        test_path = r"C:\Users\User\PycharmProjects\PycharmProject1\data\empty_file.json"
         result = get_operations_data(test_path)
 
         self.assertEqual(result, [])
@@ -47,7 +47,7 @@ class TestGetOperationsData(unittest.TestCase):
         """Тест на обработку некорректного JSON"""
         mock_file.return_value.__enter__.return_value.read.return_value = "{ invalid json }"
 
-        test_path = r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\invalid.json"
+        test_path = r"C:\Users\User\PycharmProjects\PycharmProject1\data\invalid.json"
         result = get_operations_data(test_path)
 
         self.assertEqual(result, [])
@@ -58,7 +58,7 @@ class TestGetOperationsData(unittest.TestCase):
         """Тест на случай, когда файл не найден"""
         mock_file.side_effect = FileNotFoundError
 
-        test_path = r"C:\Users\PC\PycharmProjects\Homework_Bank_widget\data\nonexistent.json"
+        test_path = r"C:\Users\User\PycharmProjects\PycharmProject1\data\nonexistent.json"
         result = get_operations_data(test_path)
 
         self.assertEqual(result, [])
