@@ -4,7 +4,7 @@ import unittest
 from unittest.mock import mock_open, patch
 
 from src.utils import \
-    get_operations_data  # Убедитесь, что путь к вашему модулю правильный
+    get_operations_data
 
 
 class TestGetOperationsData(unittest.TestCase):

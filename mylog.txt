@@ -1,2 +1,28 @@
 Starting my_function with inputs: (1, 2), {}
 my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
+Starting my_function with inputs: (1, 2), {}
+my_function ok
