@@ -1,8 +1,9 @@
 import json
 import logging
 import os
+from typing import Any, Dict, List
 
-current_dir = os.path.dirname(os.path.abspath(__file__))  # Исправлено 'file' на '__file__'
+current_dir = os.path.dirname(os.path.abspath(__file__))
 rlt_file_path = os.path.join(current_dir, "../logs/utils.log")
 abs_file_path = os.path.abspath(rlt_file_path)
 
@@ -16,10 +17,10 @@ logger.addHandler(file_handler)
 logger.setLevel(logging.DEBUG)
 
 
-def get_operations_data(file_path: str) -> list:
+def get_operations_data(file_path: str) -> list[Dict[str, Any]]:
     """Функция обрабатывает JSON-файл и преобразует в список транзакций"""
     logger.info(f"Запрос на преобразование файла {file_path}")
-    empty_data = []
+    empty_data: List[Dict[str, Any]] = []
     try:
         with open(file_path, "r", encoding="utf-8") as file:
             try:
