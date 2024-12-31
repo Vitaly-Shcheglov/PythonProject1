@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 
 def get_transaction_amount(transaction: Dict[str, Any]) -> float:
-    """Функция волучает данные о транзакции и возвращает сумму в рублях."""
+    """Функция получает данные о транзакции и возвращает сумму в рублях."""
 
     if not isinstance(transaction, dict) or len(transaction) == 0:
         print("Ошибка ввода данных!")
